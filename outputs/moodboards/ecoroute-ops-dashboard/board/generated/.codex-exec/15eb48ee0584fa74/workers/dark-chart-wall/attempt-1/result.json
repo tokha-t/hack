@@ -1,7 +1,0 @@
-{
-  "id": "dark-chart-wall",
-  "status": "failed",
-  "image_path": null,
-  "error": "Native image generation did not expose a savable PNG file or binary handle in this environment.",
-  "caveats": ""
-}
