@@ -32,16 +32,16 @@ PRIORITY_COLORS = {
 }
 
 CHART_COLORS = {
-    "fixed": "#1e3a5f",
-    "greedy": "#22c55e",
-    "optimized": "#38bdf8",
-    "blue": "#38bdf8",
-    "green": "#22c55e",
-    "surface": "#07111f",
-    "surface_2": "#0b1f35",
-    "grid": "#17304f",
-    "axis": "#245179",
-    "text": "#dbeafe",
+    "fixed": "#334155",
+    "greedy": "#10b981",
+    "optimized": "#0ea5e9",
+    "blue": "#0ea5e9",
+    "green": "#10b981",
+    "surface": "#ffffff",
+    "surface_2": "#f8fafc",
+    "grid": "#e2e8f0",
+    "axis": "#cbd5e1",
+    "text": "#0f172a",
 }
 
 PLOTLY_CONFIG = {
@@ -67,49 +67,62 @@ def inject_styles() -> None:
         }
 
         .stApp {
-            background: #f6f8fb;
+            background:
+                radial-gradient(circle at 18% 0%, rgba(20, 184, 166, 0.18), transparent 32rem),
+                radial-gradient(circle at 88% 4%, rgba(14, 165, 233, 0.16), transparent 30rem),
+                linear-gradient(180deg, #f4fbf8 0%, #f7fafc 44%, #eef5f7 100%);
+            color: #0f172a;
         }
 
         [data-testid="stSidebar"] {
-            background: linear-gradient(180deg, #edf7f1 0%, #f7fafc 100%);
-            border-right: 1px solid #dbe6e2;
+            background:
+                linear-gradient(180deg, rgba(236, 253, 245, 0.98) 0%, rgba(240, 249, 255, 0.98) 56%, #ffffff 100%);
+            border-right: 1px solid rgba(148, 163, 184, 0.26);
+            box-shadow: 12px 0 36px rgba(15, 23, 42, 0.05);
         }
 
         [data-testid="stSidebar"] h2,
         [data-testid="stSidebar"] h3 {
-            color: #1f3a33;
+            color: #0f3f3c;
+            letter-spacing: 0 !important;
+        }
+
+        [data-testid="stSidebar"] label,
+        [data-testid="stSidebar"] p {
+            color: #334155;
         }
 
         .sidebar-note {
             margin-top: 1rem;
-            padding: 0.82rem 0.9rem;
-            border: 1px solid #d7e7df;
+            padding: 0.95rem;
+            border: 1px solid rgba(20, 184, 166, 0.24);
             border-radius: 8px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.78);
             color: #475467;
             font-size: 0.84rem;
             line-height: 1.38;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
         }
 
         .sidebar-note strong {
             display: block;
             margin-bottom: 0.25rem;
-            color: #1f3a33;
+            color: #0f766e;
             font-size: 0.9rem;
         }
 
         .block-container {
-            padding-top: 3.2rem;
+            padding-top: 1.6rem;
             padding-bottom: 3rem;
-            max-width: 1480px;
+            max-width: 1360px;
         }
 
         h1, h2, h3 {
-            color: #172033;
+            color: #0f172a;
         }
 
         h1 {
-            font-size: 2.45rem !important;
+            font-size: 2.35rem !important;
             line-height: 1.08 !important;
             letter-spacing: 0 !important;
             margin-bottom: 0.6rem !important;
@@ -125,12 +138,136 @@ def inject_styles() -> None:
             line-height: 1.22 !important;
         }
 
-        [data-testid="stMetric"] {
-            padding: 0.9rem 1rem;
-            border: 1px solid #e3ebe8;
+        .eco-hero {
+            position: relative;
+            overflow: hidden;
+            margin: 0.15rem 0 1rem 0;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 12px;
+            background:
+                linear-gradient(135deg, rgba(6, 78, 59, 0.97) 0%, rgba(15, 118, 110, 0.96) 55%, rgba(14, 165, 233, 0.92) 100%);
+            color: #ffffff;
+            box-shadow: 0 22px 54px rgba(15, 76, 92, 0.22);
+        }
+
+        .eco-hero::before {
+            content: "";
+            position: absolute;
+            inset: -44% -10% auto auto;
+            width: 28rem;
+            height: 28rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .eco-hero::after {
+            content: "";
+            position: absolute;
+            right: 1.1rem;
+            bottom: -2.2rem;
+            width: 18rem;
+            height: 18rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background:
+                radial-gradient(circle, rgba(255, 255, 255, 0.15) 0 2px, transparent 2px);
+            background-size: 18px 18px;
+            opacity: 0.55;
+        }
+
+        .eco-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 980px;
+        }
+
+        .eco-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 0.75rem;
+            padding: 0.34rem 0.66rem;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.13);
+            color: #e0fbf5;
+            font-size: 0.78rem;
+            font-weight: 760;
+        }
+
+        .eco-hero h1 {
+            margin: 0 !important;
+            color: #ffffff !important;
+            font-size: 2.45rem !important;
+            line-height: 1.04 !important;
+            letter-spacing: 0 !important;
+        }
+
+        .eco-hero p {
+            max-width: 760px;
+            margin: 0.65rem 0 0 0;
+            color: rgba(240, 253, 250, 0.9);
+            font-size: 1.02rem;
+            line-height: 1.55;
+        }
+
+        .hero-stats {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            max-width: 760px;
+            margin-top: 1.15rem;
+        }
+
+        .hero-stat {
+            padding: 0.78rem 0.86rem;
+            border: 1px solid rgba(255, 255, 255, 0.24);
             border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+            background: rgba(255, 255, 255, 0.13);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+        }
+
+        .hero-stat-value {
+            color: #ffffff;
+            font-size: 1.18rem;
+            font-weight: 820;
+            line-height: 1.08;
+        }
+
+        .hero-stat-label {
+            margin-top: 0.24rem;
+            color: rgba(240, 253, 250, 0.78);
+            font-size: 0.76rem;
+            font-weight: 650;
+        }
+
+        [data-testid="stMetric"] {
+            padding: 0.92rem 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-top: 3px solid #14b8a6;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        [data-testid="stMetricLabel"] p {
+            color: #64748b;
+            font-size: 0.72rem;
+            font-weight: 760;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        [data-testid="stMetricValue"] {
+            color: #0f172a;
+            font-weight: 820;
+        }
+
+        [data-testid="stMetricDelta"] p {
+            font-weight: 760;
         }
 
         .eco-track {
@@ -140,56 +277,70 @@ def inject_styles() -> None:
             margin: 0.25rem 0 1rem 0;
             padding: 0.42rem 0.7rem;
             border-radius: 999px;
-            background: #eef9f1;
-            color: #25623d;
-            border: 1px solid #cfead5;
+            background: rgba(255, 255, 255, 0.84);
+            color: #0f766e;
+            border: 1px solid rgba(20, 184, 166, 0.24);
             font-size: 0.86rem;
-            font-weight: 650;
+            font-weight: 720;
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
         }
 
         .eco-pipeline {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.7rem;
-            margin: 1.1rem 0 1.2rem 0;
+            gap: 0.8rem;
+            margin: 1rem 0 1.3rem 0;
         }
 
         .eco-step {
-            padding: 0.85rem 0.95rem;
-            border: 1px solid #dfe7e4;
+            position: relative;
+            padding: 0.95rem 0.98rem;
+            border: 1px solid rgba(148, 163, 184, 0.24);
             border-radius: 8px;
-            background: #ffffff;
-            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+        }
+
+        .eco-step::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0.98rem;
+            right: 0.98rem;
+            height: 3px;
+            border-radius: 0 0 999px 999px;
+            background: linear-gradient(90deg, #14b8a6, #0ea5e9);
         }
 
         .eco-step strong {
             display: block;
-            color: #20332d;
+            color: #0f172a;
             font-size: 0.95rem;
             margin-bottom: 0.2rem;
         }
 
         .eco-step span {
-            color: #667085;
+            color: #64748b;
             font-size: 0.82rem;
         }
 
         .scenario-card {
             min-height: 168px;
-            padding: 1rem;
+            padding: 1.02rem;
             border-radius: 8px;
-            border: 1px solid #dfe7e4;
-            background: #ffffff;
-            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.96) 100%);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
         }
 
         .scenario-card h4 {
             margin: 0 0 0.35rem 0;
-            color: #1f2937;
+            color: #0f172a;
         }
 
         .scenario-card .scenario-meta {
-            color: #667085;
+            color: #64748b;
             font-size: 0.82rem;
             margin-bottom: 0.85rem;
         }
@@ -202,32 +353,32 @@ def inject_styles() -> None:
 
         .scenario-value {
             font-size: 1.25rem;
-            font-weight: 750;
-            color: #1f2937;
+            font-weight: 820;
+            color: #0f766e;
         }
 
         .scenario-label {
             font-size: 0.75rem;
-            color: #667085;
+            color: #64748b;
         }
 
         .map-panel {
-            padding: 1rem;
-            border: 1px solid #dfe7e4;
+            padding: 1.05rem;
+            border: 1px solid rgba(148, 163, 184, 0.24);
             border-radius: 8px;
-            background: linear-gradient(180deg, #ffffff 0%, #f8fbfa 100%);
-            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 253, 250, 0.78) 100%);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
             margin: 0.8rem 0 0.6rem 0;
         }
 
         .map-panel h3 {
             margin: 0 0 0.25rem 0;
-            color: #1f2937;
+            color: #0f172a;
         }
 
         .map-panel p {
             margin: 0 0 0.8rem 0;
-            color: #667085;
+            color: #64748b;
         }
 
         .map-legend {
@@ -236,7 +387,7 @@ def inject_styles() -> None:
             flex-wrap: wrap;
             gap: 0.55rem 1rem;
             margin: 0.4rem 0 0.95rem 0;
-            color: #475467;
+            color: #475569;
             font-size: 0.82rem;
         }
 
@@ -275,23 +426,71 @@ def inject_styles() -> None:
         }
 
         .map-stat {
-            padding: 0.75rem 0.85rem;
+            padding: 0.78rem 0.86rem;
             border-radius: 8px;
-            background: #ffffff;
-            border: 1px solid #e5ece9;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.18);
         }
 
         .map-stat-value {
             font-size: 1.35rem;
             line-height: 1.1;
-            font-weight: 780;
-            color: #1f2937;
+            font-weight: 820;
+            color: #0f172a;
         }
 
         .map-stat-label {
             margin-top: 0.28rem;
             font-size: 0.78rem;
-            color: #667085;
+            color: #64748b;
+        }
+
+        [data-testid="stPlotlyChart"] {
+            padding: 0.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        [data-testid="stDataFrame"] {
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+        }
+
+        [data-testid="stExpander"] {
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+        }
+
+        [data-testid="stAlert"] {
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+        }
+
+        .stDownloadButton > button {
+            border: 0;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #0f766e, #0ea5e9);
+            color: #ffffff;
+            font-weight: 760;
+            box-shadow: 0 12px 28px rgba(14, 165, 233, 0.18);
+        }
+
+        .stDownloadButton > button:hover {
+            color: #ffffff;
+            border: 0;
+            filter: brightness(1.03);
+        }
+
+        div[data-baseweb="select"] > div,
+        [data-testid="stSlider"] {
+            border-radius: 8px;
         }
 
         @media (max-width: 900px) {
@@ -309,6 +508,18 @@ def inject_styles() -> None:
 
             h3 {
                 font-size: 1.16rem !important;
+            }
+
+            .eco-hero {
+                padding: 1.1rem;
+            }
+
+            .eco-hero h1 {
+                font-size: 2rem !important;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
 
             .eco-pipeline {
@@ -506,10 +717,44 @@ def render_critical_alert(selected_bins_df: pd.DataFrame) -> None:
         )
 
 
+def render_hero(threshold: int | float, district_filter: str, waste_type_filter: str) -> None:
+    district_label = district_filter if district_filter != "All" else "All districts"
+    waste_label = waste_type_filter if waste_type_filter != "All" else "All waste streams"
+    st.markdown(
+        f"""
+        <section class="eco-hero">
+            <div class="eco-hero-content">
+                <div class="eco-eyebrow">SmartScape Hackathon · Ecology & Urban Environment</div>
+                <h1>EcoRoute AI</h1>
+                <p>
+                    Predict near-full bins, prioritize the right stops, and build a cleaner truck route
+                    for one Astana dispatch zone before the shift starts.
+                </p>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">{threshold}%</div>
+                    <div class="hero-stat-label">collection threshold</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">{district_label}</div>
+                    <div class="hero-stat-label">district filter</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">{waste_label}</div>
+                    <div class="hero-stat-label">waste filter</div>
+                </div>
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_pipeline(threshold: int | float) -> None:
     st.markdown(
         f"""
-        <div class="eco-track">SmartScape Hackathon · Track 2 — Ecology & Urban Environment · Astana demo</div>
+        <div class="eco-track">Live operations pipeline · Astana demo</div>
         <div class="eco-pipeline">
             <div class="eco-step">
                 <strong>1. Predict</strong>
@@ -663,12 +908,7 @@ with st.sidebar:
     )
 
 
-st.title("♻️ EcoRoute AI")
-st.subheader("Predictive Waste Collection & Route Optimization for Smart Cities")
-st.write(
-    "AI predicts near-full bins and optimizes garbage truck routes to reduce unnecessary stops, "
-    "fuel use, and emissions."
-)
+render_hero(threshold, district_filter, waste_type_filter)
 render_pipeline(threshold)
 
 with st.spinner("Preparing data and model..."):
