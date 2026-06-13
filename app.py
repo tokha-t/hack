@@ -473,6 +473,12 @@ def inject_styles() -> None:
             box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
         }
 
+        [data-testid="stAlert"],
+        [data-testid="stAlert"] p,
+        [data-testid="stAlert"] div {
+            color: #0f172a !important;
+        }
+
         .stDownloadButton > button {
             border: 0;
             border-radius: 8px;
@@ -1086,6 +1092,7 @@ with chart_col_4:
     fig_priority.update_traces(
         marker_line_width=0,
         textposition="outside",
+        textfont={"color": CHART_COLORS["text"]},
         cliponaxis=False,
         hovertemplate="%{y}<br>%{x} bins<extra></extra>",
     )
