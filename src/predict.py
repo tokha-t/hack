@@ -21,14 +21,14 @@ def assign_priority(df: pd.DataFrame, threshold: int | float) -> pd.DataFrame:
         result["predicted_fill_pct"] = pd.Series(dtype=float)
 
     predicted = result["predicted_fill_pct"].astype(float)
+    selected = predicted >= threshold
     result["priority"] = np.select(
         [
-            predicted >= 90,
-            (predicted >= 80) & (predicted < 90),
-            (predicted >= threshold) & (predicted < 80),
-            predicted < threshold,
+            selected & (predicted >= 90),
+            selected & (predicted >= 80) & (predicted < 90),
+            selected & (predicted < 80),
         ],
-        ["Critical", "High", "Medium", "Skip"],
+        ["Critical", "High", "Medium"],
         default="Skip",
     )
     return result
@@ -44,8 +44,12 @@ def _load_or_train_model():
         return joblib.load(MODEL_PATH)
 
 
-def predict_fill_levels(bins_df: pd.DataFrame, threshold: int | float = 75) -> pd.DataFrame:
-    """Predict current fill levels and save the latest prediction snapshot."""
+def predict_fill_levels(
+    bins_df: pd.DataFrame,
+    threshold: int | float = 75,
+    save_snapshot: bool = True,
+) -> pd.DataFrame:
+    """Predict current fill levels and optionally save the latest prediction snapshot."""
     ensure_data_exists()
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -53,7 +57,8 @@ def predict_fill_levels(bins_df: pd.DataFrame, threshold: int | float = 75) -> p
     if result.empty:
         result["predicted_fill_pct"] = pd.Series(dtype=float)
         result["priority"] = pd.Series(dtype=str)
-        result.to_csv(SAMPLE_PREDICTIONS_PATH, index=False)
+        if save_snapshot:
+            result.to_csv(SAMPLE_PREDICTIONS_PATH, index=False)
         return result
 
     model = _load_or_train_model()
@@ -61,6 +66,7 @@ def predict_fill_levels(bins_df: pd.DataFrame, threshold: int | float = 75) -> p
     predictions = np.clip(model.predict(X), 0, 100)
     result["predicted_fill_pct"] = np.round(predictions, 2)
     result = assign_priority(result, threshold=threshold)
-    result.to_csv(SAMPLE_PREDICTIONS_PATH, index=False)
+    if save_snapshot:
+        result.to_csv(SAMPLE_PREDICTIONS_PATH, index=False)
 
     return result

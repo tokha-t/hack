@@ -25,10 +25,10 @@ from src.train_model import METRICS_PATH, MODEL_PATH, train_and_save_model
 DEPOT = {"latitude": ASTANA_LATITUDE, "longitude": ASTANA_LONGITUDE}
 
 PRIORITY_COLORS = {
-    "Critical": "#22c55e",
-    "High": "#38bdf8",
-    "Medium": "#2563eb",
-    "Skip": "#1e293b",
+    "Critical": "#dc2626",
+    "High": "#f97316",
+    "Medium": "#eab308",
+    "Skip": "#cbd5e1",
 }
 
 CHART_COLORS = {
@@ -677,13 +677,13 @@ with st.spinner("Preparing data and model..."):
         train_and_save_model()
 
 bins_df = load_bins()
-filtered_bins_df = bins_df.copy()
+all_predicted_df = predict_fill_levels(bins_df, threshold=threshold)
+predicted_df = all_predicted_df.copy()
 if district_filter != "All":
-    filtered_bins_df = filtered_bins_df[filtered_bins_df["district"] == district_filter]
+    predicted_df = predicted_df[predicted_df["district"] == district_filter]
 if waste_type_filter != "All":
-    filtered_bins_df = filtered_bins_df[filtered_bins_df["waste_type"] == waste_type_filter]
+    predicted_df = predicted_df[predicted_df["waste_type"] == waste_type_filter]
 
-predicted_df = predict_fill_levels(filtered_bins_df, threshold=threshold)
 selected_bins_df = predicted_df[predicted_df["predicted_fill_pct"] >= threshold].copy()
 route_comparison = compare_routes(predicted_df, selected_bins_df, DEPOT)
 savings = calculate_savings(predicted_df, selected_bins_df, route_comparison)
