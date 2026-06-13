@@ -1,0 +1,9 @@
+{
+  "mae": 4.534,
+  "rmse": 5.78,
+  "r2": 0.929,
+  "train_rows": 3600,
+  "test_rows": 900,
+  "model_name": "RandomForestRegressor",
+  "generated_at": "2026-06-13T18:46:00.000034+00:00"
+}

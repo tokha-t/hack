@@ -1,0 +1,12 @@
+__pycache__/
+**pycache**/
+*.pyc
+*.pkl
+venv/
+.venv/
+.env
+.DS_Store
+.streamlit/*
+!.streamlit/
+!.streamlit/config.toml
+.ipynb_checkpoints/
